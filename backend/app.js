@@ -1,7 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 dotenv.config();
-
+import cors from "cors";
 const app = express();
 
 import "./connections/connection.js";
@@ -11,6 +11,7 @@ import Favourite from "./routes/favourite.js";
 import Cart from "./routes/cart.js";
 import Order from "./routes/order.js";
 
+app.use(cors());
 app.use(express.json());
 app.use("/api/v1", User);
 app.use("/api/v1", Books);
