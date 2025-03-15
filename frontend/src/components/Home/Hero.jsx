@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const Hero = () => {
   return (
-    <div className='h-[75vh] flex flex-col md:flex-row items-center justify-center gap-8'>
+    <div className='h-[80vh] lg:h-[75vh] flex flex-col md:flex-row items-center justify-center gap-8'>
         <div className='w-full mb-12 md:mb-0 lg:w-3/6 flex flex-col item-center lg:items-start justify-center'>
             <h1 className='md:pb-8 text-4xl lg:text-6xl font-semibold text-yellow-100 text-center lg:text-left'>
                 Discover Your Next Book

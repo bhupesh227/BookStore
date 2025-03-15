@@ -13,7 +13,7 @@ const RecentlyAdded = () => {
     fetch();
   }, []);
   return (
-    <div className='mt-8 px-4'>
+    <div className='mt-8 lg:px-4 px-2'>
         <h4 className='text-3xl text-yellow-100'>Recently Added Books</h4>
         {!Data && <div className='flex items-center justify-center my-8'>
             <Loader/>{' '}
