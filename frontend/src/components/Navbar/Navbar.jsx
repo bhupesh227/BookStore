@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
 import { FaGripLines } from "react-icons/fa6";
+import { useSelector } from 'react-redux';
 
 const Navbar = () => {
     const links = [
@@ -10,7 +11,10 @@ const Navbar = () => {
         { title: "Cart", link: "/cart" },
         { title: "Profile", link: "/profile" },
     ];
-    
+    const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+    if (isLoggedIn === false) {
+        links.splice(3, 2);
+    }
     const [MobileNav, setMobileNav] = useState("hidden");
     const handleLinkClick = () => {
         setMobileNav("hidden");
@@ -24,23 +28,26 @@ const Navbar = () => {
                         src="https://cdn-icons-png.flaticon.com/128/10433/10433049.png" alt="logo" />
                     <h1 className='text-2xl font-semibold'>BookMenia</h1>
                 </Link>
-                
-                <div className='nav-links-bookmenia hidden md:flex items-center gap-4'>
+                <div className='nav-links-bookmenia block md:flex items-center gap-4'>
+                    <div className='hidden md:flex gap-10'>
                     {links.map((items, i) => (
                         <Link to={items.link} className="hover:text-blue-400 transition-all duration-300" key={i}>
                             {items.title}{" "}
                         </Link>
-                    ))}
-                </div>
+                        ))}
+                    </div>
 
-                <div className='hidden md:flex gap-4'>
-                    <Link to={"/Login"} className='px-4 py-1 border border-blue-500 rounded hover:bg-white hover:text-zinc-800 transition-all duration-300'>
-                        Log In
-                    </Link >
-                    <Link to={"/SignUp"} className='px-4 py-1 bg-blue-500 rounded hover:bg-white hover:text-zinc-800 transition-all duration-300'>
-                        Sign Up
-                    </Link >
+                    <div className='hidden md:flex gap-4'>
+                        <Link to={"/Login"} className='px-4 py-1 border border-blue-500 rounded hover:bg-white hover:text-zinc-800 transition-all duration-300'>
+                            Log In
+                        </Link >
+                        <Link to={"/SignUp"} className='px-4 py-1 bg-blue-500 rounded hover:bg-white hover:text-zinc-800 transition-all duration-300'>
+                            Sign Up
+                        </Link >
+                    </div>
+
                 </div>
+                
 
                 <button 
                     className='md:hidden text-white text-2xl hover:text-zinc-400' 

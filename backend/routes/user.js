@@ -20,6 +20,11 @@ router.post('/sign-up', async(req, res) => {
         if(existingUsername){
             return res.status(400).json({message: "Username already exists"});
         }
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+        return res.status(400).json({ message: "Please provide a valid email address" });
+        }
         
         const existingEmail = await User.findOne({email: email });
         if(existingEmail){
