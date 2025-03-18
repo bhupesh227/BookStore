@@ -10,7 +10,6 @@ const BookDetails = () => {
     useEffect(() => {
       const fetch = async () => {
           const response = await axios.get(`http://localhost:3000/api/v1/book-details/${id}`);
-          console.log(response.data.data);
           setData(response.data.data);
       }
       fetch();
