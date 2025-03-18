@@ -33,10 +33,10 @@ const SignUp = () => {
           
     } catch (error) {
       console.log(error);
-      if (error.response && error.response.status === 400) {
-        alert(error.response.data.message);
+      if (error.response) {
+        alert(error.response.data.message || 'Something went wrong!');
       } else {
-        alert('There was an error while signing up!');
+        alert('An unexpected error occurred.');
       }
     }
   }
