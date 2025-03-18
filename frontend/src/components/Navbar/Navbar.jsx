@@ -18,7 +18,7 @@ const Navbar = () => {
     const [MobileNav, setMobileNav] = useState("hidden");
     const handleLinkClick = () => {
         setMobileNav("hidden");
-    };
+    }; 
 
     return (
         <>
@@ -30,14 +30,23 @@ const Navbar = () => {
                 </Link>
                 <div className='nav-links-bookmenia block md:flex items-center gap-4'>
                     <div className='hidden md:flex gap-10'>
-                    {links.map((items, i) => (
-                        <Link to={items.link} className="hover:text-blue-400 transition-all duration-300" key={i}>
-                            {items.title}{" "}
-                        </Link>
+                        {links.map((items, i) => (
+                            <div className='flex items-center justify-center'>
+                                {items.title ==="Profile" ?
+                                    <Link to={items.link} className="px-4 py-1 border border-blue-500 rounded hover:bg-white hover:text-zinc-800 transition-all duration-300" key={i}>
+                                        {items.title}{" "}
+                                    </Link>
+                                    :
+                                    <Link to={items.link} className="hover:text-blue-400 transition-all duration-300" key={i}>
+                                        {items.title}{" "}
+                                    </Link>
+                                }
+                            </div>
                         ))}
                     </div>
 
-                    <div className='hidden md:flex gap-4'>
+                    {isLoggedIn=== false && (
+                        <div className='hidden md:flex gap-4'>
                         <Link to={"/Login"} className='px-4 py-1 border border-blue-500 rounded hover:bg-white hover:text-zinc-800 transition-all duration-300'>
                             Log In
                         </Link >
@@ -45,6 +54,7 @@ const Navbar = () => {
                             Sign Up
                         </Link >
                     </div>
+                    )}
 
                 </div>
                 
@@ -70,20 +80,24 @@ const Navbar = () => {
                     </Link>
                 ))}
 
-                <Link 
-                    to={"/Login"} 
-                    className="px-8 mb-8 text-3xl font-semibold py-2 border border-blue-500 text-white rounded hover:bg-white hover:text-zinc-800 transition-all duration-300"
-                    onClick={handleLinkClick}
-                >
-                    Log In
-                </Link >
-                <Link 
-                    to={"/SignUp"} 
-                    className="px-8 mb-8 text-3xl font-semibold py-2 bg-blue-500 rounded hover:bg-white hover:text-zinc-800 transition-all duration-300"
-                    onClick={handleLinkClick}
-                >
-                    Sign Up
-                </Link >
+                {isLoggedIn=== false && (
+                    <>
+                        <Link 
+                            to={"/Login"} 
+                            className="px-8 mb-8 text-3xl font-semibold py-2 border border-blue-500 text-white rounded hover:bg-white hover:text-zinc-800 transition-all duration-300"
+                            onClick={handleLinkClick}
+                        >
+                            Log In
+                        </Link >
+                        <Link 
+                            to={"/SignUp"} 
+                            className="px-8 mb-8 text-3xl font-semibold py-2 bg-blue-500 rounded hover:bg-white hover:text-zinc-800 transition-all duration-300"
+                            onClick={handleLinkClick}
+                        >
+                            Sign Up
+                        </Link >
+                    </>
+                )}
             </div>
         </>
     );
