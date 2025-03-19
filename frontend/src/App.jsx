@@ -10,12 +10,16 @@ import AboutUs from './pages/AboutUs.jsx';
 import Cart from './pages/Cart.jsx';
 import Profile from './pages/Profile.jsx';
 import BookDetails from './components/BookDetails/BookDetails.jsx';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch} from 'react-redux';
 import { authActions } from './store/auth.js'
+import Favourites from './components/Profile/Favourites.jsx';
+import OrderHistory from './components/Profile/OrderHistory.jsx';
+import Settings from './components/Profile/Settings.jsx'
+
 
 const App = () => {
   const dispatch = useDispatch();
-  const role = useSelector((state) => state.auth.role);
+  //const role = useSelector((state) => state.auth.role);
   useEffect(() =>{
     if(
       localStorage.getItem("id") &&
@@ -27,12 +31,12 @@ const App = () => {
     }
   }, [dispatch]);
 
-  const PrivateRoute = ({ element }) => {
-    if (!localStorage.getItem("token")) {
-      return <Navigate to="/Login" replace />;
-    }
-    return element;
-  };
+   /* const PrivateRoute = ({ element }) => {
+      if (!localStorage.getItem("token")) {
+        return <Navigate to="/Login" replace />;
+      }
+      return element;
+    };*/
 
   return (
     <div>
@@ -42,7 +46,11 @@ const App = () => {
           <Route path='/about-us' element={<AboutUs/>}/>
           <Route path='/all-books' element={<AllBooks/>}/>
           <Route path='/cart' element={<Cart/>}/>
-          <Route path='/profile' element={<Profile/>}/>
+          <Route path='/profile' element={<Profile/>}>
+            <Route index element={<Favourites />}/>
+            <Route path='/profile/orderHistory' element={<OrderHistory/>}/>
+            <Route path='/profile/settings' element={<Settings/>}/>
+          </Route>
           <Route path='/Login' element={<Login/>}/>
           <Route path='/SignUp' element={<SignUp/>}/>
           <Route path='/book-details/:id' element={<BookDetails/>}/>
@@ -51,7 +59,7 @@ const App = () => {
       
 
     </div>
-  )
-}
+  );
+};
 
 export default App
