@@ -8,7 +8,7 @@ const Sidebar = ({data}) => {
         <div className='flex flex-col items-center justify-center w-full'>
             <img src={data.avatar} alt="avatar" className='h-[12vh] object-cover rounded-full ' />
             <p className='mt-3 text-zinc-100 font-semibold text-xl'>{data.username}</p>
-            <p className='mt-1 text-normal text-zinc-300 w-full overflow-x-auto '>{data.email}</p>
+            <p className='mt-1 text-normal text-zinc-300 w-full overflow-x-auto max-lg:text-center '>{data.email}</p>
             <div className='mt-4 h-[1px] w-full bg-zinc-500 hidden lg:block'></div>
         </div>
         <div className='w-full flex-col items-center justify-center hidden lg:flex'>

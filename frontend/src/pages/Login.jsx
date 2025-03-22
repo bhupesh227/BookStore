@@ -3,12 +3,19 @@ import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import {authActions} from "../store/auth.js";
 import {useDispatch} from "react-redux";
+import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
 
 const Login = () => {
   const [Values, setValues] = useState({
     username: '',
     password: '',
   });
+
+  const [showPassword, setShowPassword] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -58,10 +65,18 @@ const Login = () => {
                     name='username' required value={Values.username} onChange={change}/>
           </div>
 
-          <div className='mt-4'>
+          <div className='mt-4 relative'>
             <label htmlFor="" className='text-zinc-400'>Password</label>
-            <input type="text" className='w-full mt-2 bg-zinc-900 text-zinc-100 p-2 outline-none' placeholder='Password'
+            <input type={showPassword ? "text" : "password"} className='w-full mt-2 bg-zinc-900 text-zinc-100 p-2 outline-none' placeholder='Password'
                     name='password' required value={Values.password} onChange={change}/>
+            
+            <button
+              type="button"
+              onClick={togglePasswordVisibility}
+              className="absolute right-2 bottom-3 text-zinc-400 hover:text-zinc-200"
+            >
+              {showPassword ? <AiFillEyeInvisible /> : <AiFillEye />}
+            </button>
           </div>
 
           <div className='mt-4'>
