@@ -38,6 +38,18 @@ const BookDetails = () => {
               }
         }  
     }
+    const handleCart = async () => {
+        try {
+           const response = await axios.put(`http://localhost:3000/api/v1/add-to-cart`,{},{headers});
+            alert(response.data.message); 
+        } catch (error) {
+            if (error.response) {
+                alert(error.response.data.message || 'Something went wrong!');
+              } else {
+                alert('An unexpected error occurred.');
+              }
+        }
+    }
   return (
     <>
         {Data && (
@@ -50,24 +62,25 @@ const BookDetails = () => {
                     </div>
                     {isLoggedIn === true && role === "user" && (
                         <div className='flex flex-row md:flex-col items-center justify-center max-md:w-full gap-6 mt-4 ml-0 '>
-                            <button className='bg-white rounded-full text-base md:text-3xl p-2 text-red-500 flex items-center justify-center'
+                            <button className='bg-white rounded-full text-base md:text-3xl p-2 text-red-500 flex items-center justify-center hover:bg-red-600 hover:text-white cursor-pointer'
                                 onClick={handleFavourite}>
                                     <FaHeart/>{" "}
                                     <span className='ms-4 block md:hidden '>Favourites</span>
                             </button>
-                            <button className='bg-blue-500 rounded-full text-base md:text-3xl p-2 text-white flex items-center justify-center'>
-                                <FaCartShopping/>{" "}
-                                <span className='ms-4 block md:hidden '>Add to Cart</span>
+                            <button className='bg-blue-500 rounded-full text-base md:text-3xl p-2 text-white flex items-center justify-center hover:bg-white hover:text-blue-500 cursor-pointer'
+                                onClick={handleCart}>
+                                    <FaCartShopping/>{" "}
+                                    <span className='ms-4 block md:hidden '>Add to Cart</span>
                             </button>
                     </div>
                     )}
                     {isLoggedIn === true && role === "admin" && (
                         <div className='flex flex-row md:flex-col items-center justify-center max-md:w-full gap-6 mt-4 ml-0 '>
-                            <button className='bg-white rounded-full text-xl font-semibold md:text-3xl p-2 max-md:px-4 flex items-center justify-center'>
+                            <button className='bg-white rounded-full text-xl font-semibold md:text-3xl p-2 max-md:px-4 flex items-center justify-center hover:bg-black hover:text-white cursor-pointer'>
                                 <MdModeEditOutline />{" "}
                                 <span className='ms-4 block md:hidden '>Edit</span>
                             </button>
-                            <button className='text-red-500 rounded-full text-xl font-semibold md:text-3xl p-2 max-md:px-4 bg-white flex items-center justify-center'>
+                            <button className='text-red-500 rounded-full text-xl font-semibold md:text-3xl p-2 max-md:px-4 bg-white flex items-center justify-center hover:bg-red-500 hover:text-white cursor-pointer'>
                                 <MdDeleteOutline />{" "}
                                 <span className='ms-4 block md:hidden '>Delete</span>
                             </button>
