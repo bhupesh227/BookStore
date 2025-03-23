@@ -23,7 +23,7 @@ const Navbar = () => {
     return (
         <>
             <nav className='z-50 relative flex bg-zinc-800 text-white px-8 py-4 items-center justify-between'>
-                <Link to={"/"} className='flex items-center'>
+                <Link to={"/"} className='flex items-center' onClick={handleLinkClick}>
                     <img className='h-10 me-4' 
                         src="https://cdn-icons-png.flaticon.com/128/10433/10433049.png" alt="logo" />
                     <h1 className='text-2xl font-semibold'>BookMenia</h1>
@@ -68,7 +68,7 @@ const Navbar = () => {
             </nav>
 
            
-            <div className={`${MobileNav} bg-zinc-800 h-screen absolute top-0 left-0 w-full z-40 flex flex-col items-center justify-center`}>
+            <div className={`${MobileNav} md:hidden bg-zinc-800 h-screen absolute top-0 left-0 w-full z-40 flex flex-col items-center justify-center`}>
                 {links.map((items, i) => (
                     <Link 
                         to={items.link} 

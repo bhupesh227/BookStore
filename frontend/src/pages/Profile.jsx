@@ -22,9 +22,7 @@ const Profile = () => {
   return (
     <div className='bg-zinc-900 min-h-screen px-6 lg:px-12 flex flex-col lg:flex-row py-8 gap-4 text-white'>
        {!Profile && (
-          <div className='w-full h-[100%] flex items-center justify-center '>
-            <Loader/>{" "}
-          </div>
+          <div className="flex items-center justify-center w-full h-screen"><Loader />{" "}</div>
        )}
        {Profile && (
           <>

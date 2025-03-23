@@ -3,8 +3,10 @@ import { useState } from 'react'
 import Loader from '../components/Loader/Loader';
 import { AiFillDelete } from 'react-icons/ai';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Cart = () => {
+  const Navigate = useNavigate();
   const [Cart, setCart] = useState();
   const [Total, setTotal] = useState(0);
   const headers = {
@@ -47,10 +49,25 @@ const Cart = () => {
       total = 0;
     }
   }, [Cart]);
+  const PlaceOrder = async () => {
+    try {
+      const response = await axios.post('http://localhost:3000/api/v1/place-order', {order:Cart}, { headers });
+      alert(response.data.message);
+      Navigate('/profile/orderHistory');
+    } catch (error) {
+      console.log(error);
+      if (error.response) {
+        alert(error.response.data.message || 'Something went wrong!');
+      }
+      else {
+        alert('An unexpected error occurred');
+      }
+    }
+  }
 
   return (
     <div className="bg-zinc-900 px-6 py-8 min-h-screen">
-      {!Cart && <Loader />}
+      {!Cart && <div className="flex items-center justify-center w-full h-screen"><Loader />{" "}</div>}
       {Cart && Cart.length === 0 && (
         <div className="flex flex-col items-center justify-center h-screen text-white">
           <h1 className="text-2xl mb-2">Your cart is empty</h1>
@@ -110,7 +127,7 @@ const Cart = () => {
             <div className='w-[100%] mt-3'>
               <button
                 className='bg-zinc-100 rounded px-4 py-2 flex justify-center w-full font-semibold hover:bg-zinc-600 hover:text-white transition-all duration-300 cursor-pointer'
-                >
+                onClick={PlaceOrder}>
                   Proceed to Checkout
               </button>
             </div>
