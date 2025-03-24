@@ -31,16 +31,22 @@ const Navbar = () => {
                 <div className='nav-links-bookmenia block md:flex items-center gap-4'>
                     <div className='hidden md:flex gap-10'>
                         {links.map((items, i) => (
-                            <div className='flex items-center justify-center'>
-                                {items.title ==="Profile" ?
-                                    <Link to={items.link} className="px-4 py-1 border border-blue-500 rounded hover:bg-white hover:text-zinc-800 transition-all duration-300" key={i}>
+                            <div className='flex items-center justify-center'key={i}>
+                                {items.title ==="Profile" ?(
+                                    <Link to={items.link} className="px-4 py-1 bg-blue-500 border border-blue-500 rounded hover:bg-white hover:text-zinc-800 transition-all duration-300">
                                         {items.title}{" "}
                                     </Link>
-                                    :
-                                    <Link to={items.link} className="hover:text-blue-400 transition-all duration-300" key={i}>
+                                ) : items.title === "Cart" ? (
+                                    <Link 
+                                        to={items.link} 
+                                        className="px-4 py-1 bg-green-500 rounded hover:bg-green-800 transition-all duration-300">
                                         {items.title}{" "}
                                     </Link>
-                                }
+                                ) :(
+                                    <Link to={items.link} className="hover:text-blue-400 transition-all duration-300" >
+                                        {items.title}{" "}
+                                    </Link>
+                                )}
                             </div>
                         ))}
                     </div>

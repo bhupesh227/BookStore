@@ -21,7 +21,7 @@ const user = new mongoose.Schema({
   },
   avatar: {
     type: String,
-    default: "",
+    default: "https://api.dicebear.com/7.x/adventurer-neutral/svg?seed=mail@ashallendesign.co.uk",
   },
   role:{
     type: String,
