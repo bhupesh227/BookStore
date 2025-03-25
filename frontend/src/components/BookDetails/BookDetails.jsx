@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams ,useNavigate, Link } from 'react-router-dom'
 import axios from 'axios';
 import Loader from '../Loader/Loader';
 import { GrLanguage } from 'react-icons/gr'; 
@@ -13,6 +13,7 @@ const BookDetails = () => {
   const [Data,setData] = useState();
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   const role = useSelector((state) => state.auth.role);
+  const navigate = useNavigate();
     useEffect(() => {
       const fetch = async () => {
           const response = await axios.get(`http://localhost:3000/api/v1/book-details/${id}`);
@@ -50,6 +51,20 @@ const BookDetails = () => {
               }
         }
     }
+
+    const handleDelete = async () => {
+        try {
+            const response = await axios.delete(`http://localhost:3000/api/v1/delete-book`,{headers});
+            alert(response.data.message); 
+            navigate('/all-books');
+         } catch (error) {
+            if (error.response) {
+                alert(error.response.data.message || 'Something went wrong!');
+            } else {
+                alert('An unexpected error occurred.');
+            }
+        }  
+    }
   return (
     <>
         {Data && (
@@ -76,13 +91,14 @@ const BookDetails = () => {
                     )}
                     {isLoggedIn === true && role === "admin" && (
                         <div className='flex flex-row md:flex-col items-center justify-center max-md:w-full gap-6 mt-4 ml-0 '>
-                            <button className='bg-white rounded-full text-xl font-semibold md:text-3xl p-2 max-md:px-4 flex items-center justify-center hover:bg-black hover:text-white cursor-pointer'>
+                            <Link to={`/EditBook/${id}`} className='bg-white rounded-full text-xl font-semibold md:text-3xl p-2 max-md:px-4 flex items-center justify-center hover:bg-black hover:text-white cursor-pointer'>
                                 <MdModeEditOutline />{" "}
                                 <span className='ms-4 block md:hidden '>Edit</span>
-                            </button>
-                            <button className='text-red-500 rounded-full text-xl font-semibold md:text-3xl p-2 max-md:px-4 bg-white flex items-center justify-center hover:bg-red-500 hover:text-white cursor-pointer'>
-                                <MdDeleteOutline />{" "}
-                                <span className='ms-4 block md:hidden '>Delete</span>
+                            </Link>
+                            <button className='text-red-500 rounded-full text-xl font-semibold md:text-3xl p-2 max-md:px-4 bg-white flex items-center justify-center hover:bg-red-500 hover:text-white cursor-pointer'
+                                onClick={handleDelete}>
+                                    <MdDeleteOutline />{" "}
+                                    <span className='ms-4 block md:hidden '>Delete</span>
                             </button>
                     </div>
                     )}
