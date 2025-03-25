@@ -2,7 +2,6 @@ import express from 'express';
 import Order from '../models/order.js';
 import authenticationToken from './userAuth.js';
 import User from '../models/user.js';
-import Book from '../models/book.js';
 
 const router = express.Router();
 
@@ -40,6 +39,11 @@ router.get("/order-history", authenticationToken, async (req, res) => {
 
 router.get("/all-orders", authenticationToken, async (req, res) => {
     try {
+        const {id}=req.headers;
+        const user=await User.findById(id);
+        if(user.role !== "admin"){
+            return res.status(403).json({message: "You are not authorized for this role"});
+        }
         const ordersData = await Order.find().populate("book").populate("user").sort({createdAt: -1});
         return res.status(200).json({
             data: ordersData,
@@ -49,10 +53,15 @@ router.get("/all-orders", authenticationToken, async (req, res) => {
     }
 });
 
-router.put("/update-status/:id",authenticationToken, async (req, res) => {
+router.put("/update-status/:ids",authenticationToken, async (req, res) => {
     try {
-        const {id} = req.params;
-        await Order.findByIdAndUpdate(id, {status: req.body.status});
+        const {id}=req.headers;
+        const user=await User.findById(id);
+        if(user.role !== "admin"){
+            return res.status(403).json({message: "You are not authorized for this role"});
+        }
+        const {ids} = req.params;
+        await Order.findByIdAndUpdate(ids, {status: req.body.status});
         return res.status(200).json({ message: "Order updated successfully" });
     } catch (error) {
         return res.status(500).json({ message: "Internal server error in update-order" });
