@@ -39,7 +39,7 @@ const OrderHistory = () => {
 
       {OrderHistory && OrderHistory.length > 0 && (
         <div className='h-screen p-0 md:p-4 text-zinc-100'>
-          <h1 className='text-3xl md:text-5xl font-semibold text-zinc-500 mb-8'>Your Order History</h1>
+          <h1 className='text-3xl md:text-5xl font-semibold text-zinc-200 mb-8 text-center'>Your Order History</h1>
           <div className='mt-4 bg-zinc-800 w-full rounded px-4 py-2 flex gap-2 mb-4'>
             <div className='w-[3%]'>
               <h1 className='text-center'>Sr.</h1>
@@ -61,12 +61,12 @@ const OrderHistory = () => {
             </div>
           </div>
           {OrderHistory.map((items,index) => (
-            <div key={items._id} className='bg-zinc-800 w-full rounded py-2 px-4 flex gap-4 hover:bg-zinc-900 cursor-pointer mb-2'> 
+            <div key={items._id} className='bg-zinc-800 w-full rounded py-2 px-4 flex gap-4 hover:bg-zinc-900 mb-2'> 
               <div className='w-[3%]'>
                 <h1 className='text-center'>{index+1}</h1>
               </div>
               <div className='w-[22%]'>
-                <Link to={`/book-details/${items.book._id}`} className='hover:text-blue-300'>{items.book.title}</Link>
+                <Link to={`/book-details/${items.book._id}`} className='hover:text-blue-300 cursor-pointer'>{items.book.title}</Link>
               </div>
               <div className='w-[45%]'>
                 <h1 className=''>{items.book.desc.slice(0,50)} ...</h1>

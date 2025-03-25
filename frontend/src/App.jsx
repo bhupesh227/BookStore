@@ -61,7 +61,7 @@ const App = () => {
           </Route>
           <Route path='/Login' element={<Login/>}/>
           <Route path='/SignUp' element={<SignUp/>}/>
-          <Route path='/EditBook/:id' element={<EditBook/>}/>
+          {role === "admin" && <Route path='/EditBook/:id' element={<EditBook/>}/> }
           <Route path='/book-details/:id' element={<BookDetails/>}/>
         </Routes>
         <Footer/>
