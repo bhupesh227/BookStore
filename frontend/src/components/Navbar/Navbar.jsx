@@ -10,10 +10,19 @@ const Navbar = () => {
         { title: "All Books", link: "/all-books" },
         { title: "Cart", link: "/cart" },
         { title: "Profile", link: "/profile" },
+        {title: "Admin Profile", link: "/profile"}
     ];
     const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+    const role = useSelector((state) => state.auth.role);
     if (isLoggedIn === false) {
+        links.splice(3, 3);
+    }
+    if (isLoggedIn === true && role === "user") {
+        links.splice(5, 1);
+    }
+    if (isLoggedIn === true && role === "admin") {
         links.splice(3, 2);
+        
     }
     const [MobileNav, setMobileNav] = useState("hidden");
     const handleLinkClick = () => {
@@ -29,10 +38,10 @@ const Navbar = () => {
                     <h1 className='text-2xl font-semibold'>BookMenia</h1>
                 </Link>
                 <div className='nav-links-bookmenia block md:flex items-center gap-4'>
-                    <div className='hidden md:flex gap-10'>
+                    <div className='hidden md:flex gap-6'>
                         {links.map((items, i) => (
                             <div className='flex items-center justify-center'key={i}>
-                                {items.title ==="Profile" ?(
+                                {items.title ==="Profile" || items.title ==="Admin Profile" ?(
                                     <Link to={items.link} className="px-4 py-1 bg-blue-500 border border-blue-500 rounded hover:bg-white hover:text-zinc-800 transition-all duration-300">
                                         {items.title}{" "}
                                     </Link>
