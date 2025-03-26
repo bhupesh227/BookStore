@@ -16,7 +16,7 @@ const AllBooks = () => {
   }, []);
 
   return (
-    <div className='bg-zinc-900 h-auto px-12 py-8'>
+    <div className='bg-zinc-900 h-auto px-12 py-8 min-h-screen'>
        <h4 className='text-3xl text-yellow-100'>All Books</h4>
         {!Data && <div className="flex items-center justify-center w-full h-screen"><Loader />{" "}
         </div>}

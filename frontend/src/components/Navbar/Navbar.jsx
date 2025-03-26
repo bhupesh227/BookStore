@@ -33,9 +33,9 @@ const Navbar = () => {
         <>
             <nav className='z-50 relative flex bg-zinc-800 text-white px-8 py-4 items-center justify-between'>
                 <Link to={"/"} className='flex items-center' onClick={handleLinkClick}>
-                    <img className='h-10 me-4' 
+                    <img className='h-10 md:me-4 me-2' 
                         src="https://cdn-icons-png.flaticon.com/128/10433/10433049.png" alt="logo" />
-                    <h1 className='text-2xl font-semibold'>BookMenia</h1>
+                    <h1 className='text-2xl font-serif font-semibold text-purple-300'>SellerManic</h1>
                 </Link>
                 <div className='nav-links-bookmenia block md:flex items-center gap-4'>
                     <div className='hidden md:flex gap-6'>
