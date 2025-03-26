@@ -54,7 +54,7 @@ const BookDetails = () => {
 
     const handleDelete = async () => {
         try {
-            const response = await axios.delete(`http://localhost:3000/api/v1/delete-book`,{headers});
+            const response = await axios.delete(`http://localhost:3000/api/v1/delete-book/${id}`,{headers});
             alert(response.data.message); 
             navigate('/all-books');
          } catch (error) {

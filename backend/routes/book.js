@@ -54,10 +54,10 @@ router.put("/update-book",authenticationToken, async (req, res) => {
     }
 });
 
-router.delete("/delete-book",authenticationToken, async (req, res) => {
+router.delete("/delete-book/:bookid",authenticationToken, async (req, res) => {
     try {
         const {id}=req.headers;
-        const {bookid} = req.headers;
+        const {bookid} = req.params;
         const user=await User.findById(id);
         if(user.role !== "admin"){
             return res.status(403).json({message: "You are not authorized for this role"});
