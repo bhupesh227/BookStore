@@ -175,4 +175,4 @@ bhupesh227-bookstore/
 - Distributed under the MIT License.
 
 ## 📬 Contact
-- Email: [BhupeshBora](mailto:bhupeshbora783@gmail.com)
+- Email: [BhupeshBora](mailto:contact@bhupeshbora.in)
