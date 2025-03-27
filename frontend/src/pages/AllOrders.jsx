@@ -18,7 +18,7 @@ const AllOrders = () => {
   };
   useEffect(() => {
     const fetch = async () => {
-        const response = await axios.get(`http://localhost:3000/api/v1/all-orders`, {headers});
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/all-orders`, {headers});
         setAllOrders(response.data.data);
     }
     fetch();
@@ -32,8 +32,8 @@ const AllOrders = () => {
   const submitChanges = async (index) => {
     try {
       const id = AllOrders[index]._id;
-      const response = await axios.put(`http://localhost:3000/api/v1/update-status/${id}`, Value, {headers});
-      const updated = await axios.get(`http://localhost:3000/api/v1/all-orders`, { headers });   //  Re-fetch updated orders
+      const response = await axios.put(`${import.meta.env.VITE_API_URL}/api/v1/update-status/${id}`, Value, {headers});
+      const updated = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/all-orders`, { headers });   //  Re-fetch updated orders
       setAllOrders(updated.data.data);
       alert(response.data.message);
     } catch (error) {

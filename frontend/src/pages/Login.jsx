@@ -34,7 +34,7 @@ const Login = () => {
         alert('Please fill all the fields');
         return;
       }else{
-        const response = await axios.post('http://localhost:3000/api/v1/login', Values);
+        const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/v1/login`, Values);
 
         dispatch(authActions.login());
         dispatch(authActions.changeRole(response.data.role));

@@ -33,7 +33,7 @@ const AddBook = () => {
       ) {
         alert('Please fill all the fields');
       } else {
-        const response = await axios.post('http://localhost:3000/api/v1/add-book', Data, {headers});
+        const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/v1/add-book`, Data, {headers});
         setData({
           url : '',
           title : '',

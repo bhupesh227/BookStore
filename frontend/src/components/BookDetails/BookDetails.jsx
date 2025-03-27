@@ -16,7 +16,7 @@ const BookDetails = () => {
   const navigate = useNavigate();
     useEffect(() => {
       const fetch = async () => {
-          const response = await axios.get(`http://localhost:3000/api/v1/book-details/${id}`);
+          const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/book-details/${id}`);
           setData(response.data.data);
       }
       fetch();
@@ -29,7 +29,7 @@ const BookDetails = () => {
     }
     const handleFavourite = async () => {
         try {
-           const response = await axios.put(`http://localhost:3000/api/v1/add-favourite`,{},{headers});
+           const response = await axios.put(`${import.meta.env.VITE_API_URL}/api/v1/add-favourite`,{},{headers});
             alert(response.data.message); 
         } catch (error) {
             if (error.response) {
@@ -41,7 +41,7 @@ const BookDetails = () => {
     }
     const handleCart = async () => {
         try {
-           const response = await axios.put(`http://localhost:3000/api/v1/add-to-cart`,{},{headers});
+           const response = await axios.put(`${import.meta.env.VITE_API_URL}/api/v1/add-to-cart`,{},{headers});
             alert(response.data.message); 
         } catch (error) {
             if (error.response) {
@@ -54,7 +54,7 @@ const BookDetails = () => {
 
     const handleDelete = async () => {
         try {
-            const response = await axios.delete(`http://localhost:3000/api/v1/delete-book/${id}`,{headers});
+            const response = await axios.delete(`${import.meta.env.VITE_API_URL}/api/v1/delete-book/${id}`,{headers});
             alert(response.data.message); 
             navigate('/all-books');
          } catch (error) {

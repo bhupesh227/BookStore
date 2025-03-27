@@ -17,14 +17,14 @@ const Settings = () => {
   }
   useEffect(() => {
     const fetch = async () => {
-      const response = await axios.get("http://localhost:3000/api/v1/profile-info", { headers });
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/profile-info`, { headers });
       setProfileData(response.data);
       setValue({address: response.data.address});
     }
     fetch();
   },[]);
   const updateAddress = async () => {
-    const response = await axios.put("http://localhost:3000/api/v1/update-address", Value, { headers });
+    const response = await axios.put(`${import.meta.env.VITE_API_URL}/api/v1/update-address`, Value, { headers });
     alert(response.data.message);
   }
   return (

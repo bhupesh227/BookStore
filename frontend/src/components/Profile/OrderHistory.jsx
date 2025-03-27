@@ -12,7 +12,7 @@ const OrderHistory = () => {
   const [OrderHistory, setOrderHistory] = useState();
   useEffect(() => {
     const fetch = async () => {
-      const response = await axios.get("http://localhost:3000/api/v1/order-history", { headers });
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/order-history`, { headers });
       setOrderHistory(response.data.data);
     }
     fetch();
