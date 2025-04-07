@@ -68,8 +68,8 @@ const BookDetails = () => {
   return (
     <>
         {Data && (
-            <div className='px-5 md:px-12 py-8 bg-zinc-900 flex flex-col md:flex-row  gap-8 '>
-                <div className='bg-zinc-800 rounded md:p-4 p-6 h-[60vh] md:h-[85vh] md:w-3/6 flex flex-col md:flex-row items-start justify-center'>
+            <div className='px-5 md:px-12 py-8 bg-whole flex flex-col md:flex-row  gap-8 '>
+                <div className='bg-gray-950 rounded-xl md:p-4 p-6 h-[60vh] md:h-[85vh] md:w-3/6 flex flex-col md:flex-row items-start justify-center'>
                     {" "}
                     <div className='w-full md:w-6/6 '>
                     {" "}
@@ -106,9 +106,9 @@ const BookDetails = () => {
                     
                 </div>
                 <div className='p-4 md:w-3/6'>
-                    <h1 className='text-4xl font-semibold text-zinc-100'>{Data.title}</h1>
-                    <p className='mt-1 text-zinc-300'>By {Data.author}</p>
-                    <p className='mt-4 text-xl text-zinc-400'>Rs. {Data.desc}</p>
+                    <h1 className='text-4xl font-semibold text-orange-400'>{Data.title}</h1>
+                    <p className='mt-1 text-zinc-400'>By {Data.author}</p>
+                    <p className='mt-4 text-xl text-gray-300'>Rs. {Data.desc}</p>
                     <p className='flex mt-4 items-center justify-start text-zinc-300'>
                         <GrLanguage className='me-3'/>{Data.language}
                     </p>

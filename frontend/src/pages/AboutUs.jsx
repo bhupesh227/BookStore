@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const AboutUs = () => {
   return (
-    <div className="text-zinc-100 bg-zinc-900 min-h-screen p-4 md:p-8">
+    <div className="text-zinc-100 bg-whole min-h-screen p-4 md:p-8">
 
       <div className="relative h-64 md:h-96 overflow-hidden rounded-lg mb-8">
         <img

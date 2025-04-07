@@ -1,1 +1,13 @@
 @import "tailwindcss";
+@tailwind utilities;
+
+@layer utilities {
+  .bg {
+    background-image: url('/4.jpg');
+    background-size: cover;
+  }
+  .bg-whole{
+    background-image: url('/pattern.webp');
+    background-size: cover;
+  }
+}

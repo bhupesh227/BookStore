@@ -5,7 +5,7 @@ const Hero = () => {
   return (
     <div className='h-[80vh] lg:h-[75vh] flex flex-col md:flex-row items-center justify-center gap-8'>
         <div className='w-full mb-12 md:mb-0 lg:w-3/6 flex flex-col item-center lg:items-start justify-center'>
-            <h1 className='md:pb-8 text-4xl lg:text-6xl font-semibold text-yellow-100 text-center lg:text-left'>
+            <h1 className='md:pb-8 text-4xl lg:text-6xl font-semibold text-yellow-300 text-center lg:text-left'>
                 Discover Your Next Book
             </h1>
             <p className='mt-4 md:mt-8 text-xl text-zinc-300 text-center lg:text-left'>
@@ -19,7 +19,7 @@ const Hero = () => {
             </div>
         </div>
         <div className='w-full lg:w-3/6 h-auto lg:h-[100%] flex justify-center items-center'>
-            <img className='rounded-2xl drop-shadow-xl mix-blend-lighten' src="./bookread.png" alt="book reading" />
+            <img className='rounded-2xl drop-shadow-xl ' src="./bookread.png" alt="book reading" />
         </div>
     </div>
   )

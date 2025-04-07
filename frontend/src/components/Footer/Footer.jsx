@@ -3,7 +3,7 @@ import { FaGithub, FaInstagram, FaLinkedin } from 'react-icons/fa';
 
 const Footer = () => {
   return (
-    <div className="bg-zinc-800 text-white px-4 py-2 flex flex-col items-center gap-0">
+    <div className="bg-zinc-950 text-white px-4 py-2 flex flex-col items-center gap-0">
        <div className="flex gap-6">
         <a
           href="https://github.com/bhupesh227"

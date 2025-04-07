@@ -24,14 +24,14 @@ const BookCard = ({data, favourite }) => {
     
   };
   return (
-    <div className='bg-zinc-800 rounded p-4 flex flex-col h-full justify-between'>
+    <div className='bg rounded-2xl p-4 flex flex-col h-full justify-between'>
         <Link to={`/book-details/${data._id}`}>
             <div className=''>
-                <div className='bg-zinc-900 rounded flex items-center justify-center'>
+                <div className='bg-gray-800 rounded-lg flex items-center justify-center'>
                     <img src={data.url} alt="/" className='h-[30vh]'/>
                 </div>
-                <h2 className='pl-4 lg:pl-2 mt-4 text-xl font-semibold h-[auto] text-white'>{data.title}</h2>
-                <p className='pl-4 lg:pl-2 mt-2 text-zinc-400 font-semibold '>By {data.author}</p>
+                <h2 className='pl-4 lg:pl-2 mt-4 text-xl font-semibold h-[auto] text-yellow-500'>{data.title}</h2>
+                <p className='pl-4 lg:pl-2 mt-2 text-zinc-300 font-semibold '>By {data.author}</p>
                 <p className='pl-4 lg:pl-2 mt-2 text-zinc-200 font-semibold text-xl'>Rs. {data.price}</p>
             </div>
         </Link>

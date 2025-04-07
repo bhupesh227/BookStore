@@ -66,7 +66,7 @@ const Cart = () => {
   }
 
   return (
-    <div className="bg-zinc-900 px-6 py-8 min-h-screen">
+    <div className="bg-whole px-6 py-8 min-h-screen">
       {!Cart && <div className="flex items-center justify-center w-full h-screen"><Loader />{" "}</div>}
       {Cart && Cart.length === 0 && (
         <div className="flex flex-col items-center justify-center h-screen text-white">
@@ -88,12 +88,12 @@ const Cart = () => {
           <h1 className="text-5xl font-bold text-zinc-100 mb-8">Your Cart</h1>
           {Cart.map((item, i) => (
             <div
-              className="w-full my-4 rounded-lg p-4 bg-zinc-800 flex flex-col lg:flex-row 
+              className="w-full my-4 rounded-lg p-4 bg-gray-900 flex flex-col lg:flex-row 
                         justify-between items-center hover:shadow-md transition-shadow duration-300"
               key={i}
             >
               <img src={item.url} alt="/" className="h-[20vh] lg:h-[10vh] object-cover rounded" />
-              <div className="w-full lg:w-auto mt-4 lg:mt-0">
+              <div className=" w-full lg:w-auto mt-4 lg:mt-0">
                 <h1 className="text-2xl text-zinc-100 font-semibold">{item.title}</h1>
                 <p className="text-zinc-400 mt-2 hidden lg:block">
                   {item.desc.slice(0, 100)}...
@@ -119,7 +119,7 @@ const Cart = () => {
       )}
       {Cart && Cart.length > 0 && (
         <div className='mt-4 w-full flex items-center justify-end'>
-          <div className='p-4 bg-zinc-800 rounded'>
+          <div className='p-4 bg-gray-900 rounded'>
             <h1 className='text-3xl text-zinc-200 font-semibold'>Total Amount :-</h1>
             <div className='flex items-center justify-between text-xl text-zinc-200 mt-4'>
               <h2>{Cart.length} Books</h2><h2>{Total}</h2>

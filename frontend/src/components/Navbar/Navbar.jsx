@@ -31,7 +31,7 @@ const Navbar = () => {
 
     return (
         <>
-            <nav className='z-50 relative flex bg-zinc-800 text-white px-8 py-4 items-center justify-between'>
+            <nav className='z-50 relative flex bg-whole border-b-1 border-white text-white px-8 py-4 items-center justify-between'>
                 <Link to={"/"} className='flex items-center' onClick={handleLinkClick}>
                     <img className='h-10 md:me-4 me-2' 
                         src="https://cdn-icons-png.flaticon.com/128/10433/10433049.png" alt="logo" />
